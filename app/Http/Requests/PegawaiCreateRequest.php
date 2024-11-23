@@ -23,7 +23,7 @@ class PegawaiCreateRequest extends FormRequest
     {
         return [
             'nama' => 'required|string|max:255',
-            'email' => 'required|email|unique:pegawai,email|max:255',
+            'email' => 'required|email|unique:pegawais,email|max:255',
             'telepon' => 'required|string|max:15',
             'alamat' => 'nullable|string',
             'tanggal_lahir' => 'required|date|before:today',

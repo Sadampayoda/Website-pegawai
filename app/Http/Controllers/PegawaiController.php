@@ -24,7 +24,6 @@ class PegawaiController extends Controller
     {
         return view('pegawai.index',[
             'title' => 'Data Pegawai',
-            'data' => $this->crud->all()
         ]);
     }
 
@@ -33,7 +32,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        return view('pegawai.index',[
+        return view('pegawai.create',[
             'title' => 'Tambah Pegawai'
         ]);
     }
@@ -45,7 +44,7 @@ class PegawaiController extends Controller
     {
         $result = $this->crud->create($pegawaiCreateRequest->validated());
 
-        return redirect()->back()->with($result['type'],$result['message']);
+        return redirect()->route('pegawai.index')->with($result['type'],$result['message']);
     }
 
     /**
@@ -53,10 +52,7 @@ class PegawaiController extends Controller
      */
     public function show(Pegawai $pegawai)
     {
-        return view('pegawai.show',[
-            'data' => $this->crud->find($pegawai->id),
-            'title' => 'Detail Pegawai'
-        ]);
+
     }
 
     /**
@@ -64,7 +60,7 @@ class PegawaiController extends Controller
      */
     public function edit(Pegawai $pegawai)
     {
-        return view('pegawai.show',[
+        return view('pegawai.edit',[
             'data' => $this->crud->find($pegawai->id),
             'title' => 'Edit Pegawai'
         ]);
